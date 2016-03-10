@@ -1,0 +1,26 @@
+hello:
+  links:
+    - "db:db"
+  build: .
+  volumes:
+    - ./src:/app/src
+  command: node ./src/hello.js
+
+autotest:
+  links:
+    - "db:db"
+  build: .
+  volumes:
+    - ./src:/app/src
+  command: mocha ./src/hello.spec.js --watch
+
+test:
+  links:
+    - "db:db"
+  build: .
+  volumes:
+    - ./src:/app/src
+  command: mocha ./src/hello.spec.js
+
+db:
+  image: mongo:3
