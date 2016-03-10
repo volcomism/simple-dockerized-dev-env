@@ -1,0 +1,3 @@
+- name: my_test
+  service: test
+  command: true # run default

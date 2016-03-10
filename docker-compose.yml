@@ -5,6 +5,8 @@ hello:
   volumes:
     - ./src:/app/src
   command: node ./src/hello.js
+  environment:
+    - NODE_ENV=development
 
 autotest:
   links:
@@ -13,6 +15,8 @@ autotest:
   volumes:
     - ./src:/app/src
   command: mocha ./src/hello.spec.js --watch
+  environment:
+    - NODE_ENV=test
 
 test:
   links:
@@ -21,6 +25,8 @@ test:
   volumes:
     - ./src:/app/src
   command: mocha ./src/hello.spec.js
+  environment:
+    - NODE_ENV=test
 
 db:
   image: mongo:3
