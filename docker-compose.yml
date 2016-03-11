@@ -3,7 +3,7 @@ hello:
     - "db:db"
   build: .
   volumes:
-    - ./src:/app/src
+    - .:/app
   command: node ./src/hello.js
   environment:
     - NODE_ENV=development
