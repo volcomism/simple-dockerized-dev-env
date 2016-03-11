@@ -1,8 +1,13 @@
-FROM mhart/alpine-node:5
+FROM bootstrap_demo
 
-RUN mkdir -p /app
+# /app already exists
 WORKDIR /app
 
+# add the precompiled node_modules to our workdir
+RUN ln -sf /tmp/node_modules .
+
+# Add the newest package.json
 ADD ./package.json .
-RUN npm install -g mocha
+
+# install dependencies based on the newest file.
 RUN npm install
